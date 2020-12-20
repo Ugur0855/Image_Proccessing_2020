@@ -318,7 +318,7 @@ class Ui_MainWindow(object):
         if self.tmp is not None:
             rotated = imutils.rotate_bound(self.tmp, 15)
             self.setPhoto(rotated)
-            MainWindow.resize(701, 566)
+            #MainWindow.resize(1366, 768)
 
 
 if __name__ == "__main__":
