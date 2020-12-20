@@ -34,7 +34,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="sharpenButton">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -42,7 +42,7 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>Keskinlik</string>
         </property>
        </widget>
       </item>
@@ -248,7 +248,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="enUzunlukText">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -299,7 +299,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="boyUzunlukText">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -309,7 +309,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="resizeButton">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -430,9 +430,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>resizeButton</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit</receiver>
+   <receiver>enUzunlukText</receiver>
    <slot>copy()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -446,9 +446,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>resizeButton</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_2</receiver>
+   <receiver>boyUzunlukText</receiver>
    <slot>copy()</slot>
    <hints>
     <hint type="sourcelabel">

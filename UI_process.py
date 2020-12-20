@@ -30,10 +30,10 @@ class Ui_MainWindow(object):
         self.histButton.setMinimumSize(QtCore.QSize(75, 0))
         self.histButton.setObjectName("histButton")
         self.verticalLayout.addWidget(self.histButton)
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setMinimumSize(QtCore.QSize(75, 0))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout.addWidget(self.pushButton_4)
+        self.sharpenButton = QtWidgets.QPushButton(self.centralwidget)
+        self.sharpenButton.setMinimumSize(QtCore.QSize(75, 0))
+        self.sharpenButton.setObjectName("sharpenButton")
+        self.verticalLayout.addWidget(self.sharpenButton)
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_5.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButton_5.setObjectName("pushButton_5")
@@ -103,12 +103,12 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setEnabled(True)
-        self.lineEdit.setMinimumSize(QtCore.QSize(75, 0))
-        self.lineEdit.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.lineEdit.setObjectName("lineEdit")
-        self.horizontalLayout.addWidget(self.lineEdit)
+        self.enUzunlukText = QtWidgets.QLineEdit(self.centralwidget)
+        self.enUzunlukText.setEnabled(True)
+        self.enUzunlukText.setMinimumSize(QtCore.QSize(75, 0))
+        self.enUzunlukText.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.enUzunlukText.setObjectName("enUzunlukText")
+        self.horizontalLayout.addWidget(self.enUzunlukText)
         spacerItem5 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
@@ -116,14 +116,14 @@ class Ui_MainWindow(object):
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout.addWidget(self.label_4)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setMinimumSize(QtCore.QSize(75, 0))
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.horizontalLayout.addWidget(self.lineEdit_2)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setMinimumSize(QtCore.QSize(75, 0))
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.boyUzunlukText = QtWidgets.QLineEdit(self.centralwidget)
+        self.boyUzunlukText.setMinimumSize(QtCore.QSize(75, 0))
+        self.boyUzunlukText.setObjectName("boyUzunlukText")
+        self.horizontalLayout.addWidget(self.boyUzunlukText)
+        self.resizeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.resizeButton.setMinimumSize(QtCore.QSize(75, 0))
+        self.resizeButton.setObjectName("resizeButton")
+        self.horizontalLayout.addWidget(self.resizeButton)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem6)
         self.resetButton = QtWidgets.QPushButton(self.centralwidget)
@@ -136,12 +136,12 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.verticalSlider.valueChanged['int'].connect(self.brightness_value)
-        self.verticalSlider_2.valueChanged['int'].connect(self.blur_value)
         self.open.clicked.connect(self.loadImage)
         self.save.clicked.connect(self.savePhoto)
+        self.verticalSlider.valueChanged['int'].connect(self.brightness_value)
+        self.verticalSlider_2.valueChanged['int'].connect(self.blur_value)
         self.histButton.clicked.connect(self.hist)
-        self.pushButton.clicked.connect(self.changeResize)
+        self.resizeButton.clicked.connect(self.changeResize)
         self.resetButton.clicked.connect(self.sifirla)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -149,7 +149,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.histButton.setText(_translate("MainWindow", "Histogram"))
-        self.pushButton_4.setText(_translate("MainWindow", "PushButton"))
+        self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
         self.pushButton_5.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
@@ -160,12 +160,12 @@ class Ui_MainWindow(object):
         self.goruntuLabel.setText(_translate("MainWindow", "Görüntü"))
         self.label.setText(_translate("MainWindow", "En"))
         self.label_4.setText(_translate("MainWindow", "Boy"))
-        self.pushButton.setText(_translate("MainWindow", "Resize"))
+        self.resizeButton.setText(_translate("MainWindow", "Resize"))
         self.resetButton.setText(_translate("MainWindow", "RESET"))
+        
 
 
-
-        # Added code here
+# Added code here
         self.filename = None # Will hold the image address location
         self.tmp = None # Will hold the temporary image for display
         self.brightness_value_now = 0 # Updated brightness value
@@ -266,8 +266,8 @@ class Ui_MainWindow(object):
     def changeResize(self):
 
         if self.tmp is not None:
-            self.enDegeri = int(self.lineEdit.text())
-            self.boyDegeri = int(self.lineEdit_2.text())
+            self.enDegeri = int(self.enUzunlukText.text())
+            self.boyDegeri = int(self.boyUzunlukText.text())
             dim = (self.enDegeri, self.boyDegeri)
             self.tmp = cv2.resize(self.tmp, dim, interpolation = cv2.INTER_AREA)
             self.setPhoto(self.tmp)
