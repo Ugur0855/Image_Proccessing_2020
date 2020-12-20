@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Görüntü İşleme Yazılımı"))
         self.open.setText(_translate("MainWindow", "Open"))
         self.save.setText(_translate("MainWindow", "Save"))
         self.bilgiLabel.setText(_translate("MainWindow", "Bilgi"))
@@ -232,6 +232,8 @@ class Ui_MainWindow(object):
         self.sag = 0
         self.alt = 0
         self.üst = 0
+        self.width = 0
+        self.height = 0
 
     def loadImage(self):
         """ This function will load the user selected image
@@ -241,7 +243,11 @@ class Ui_MainWindow(object):
         if(self.filename):
             self.image = cv2.imread(self.filename)
             dim = str(self.image.shape)
-            self.bilgiLabel.setText(dim)
+            self.width, self.height = Image.open(self.filename).size
+            self.width = str(self.width)
+            self.height = str(self.height)
+            bilgi = dim + "(" + self.width + "x" + self.height + ")"
+            self.bilgiLabel.setText(bilgi)
             self.setPhoto(self.image)
 
     def setPhoto(self,image):
@@ -341,6 +347,18 @@ class Ui_MainWindow(object):
 
     def sifirla(self):
         if self.tmp is not None:
+
+            dim1 = len(self.image)
+            print(dim1)
+            dim2 = len(self.image[0])
+            print(dim2)
+            dim = str(self.image.shape)
+            self.width = dim2
+            self.height = dim1
+            self.width = str(self.width)
+            self.height = str(self.height)
+            bilgi = dim + "(" + self.width + "x" + self.height + ")"
+            self.bilgiLabel.setText(bilgi)
             self.setPhoto(self.image)
 
     def keskinlestir(self):
@@ -371,13 +389,43 @@ class Ui_MainWindow(object):
 
     def kirpImage(self):
         if self.tmp is not None:
-            self.sol = int(self.lineEdit.text())
-            self.üst = int(self.lineEdit_2.text())
-            self.sag = int(self.lineEdit_3.text())
-            self.alt = int(self.lineEdit_4.text())
-            
-            crop_img = self.tmp[self.alt:self.üst, self.sol:self.sag]
-            self.setPhoto(crop_img)
+            if(self.lineEdit.text() != "" and self.lineEdit_3.text() != ""):
+                self.sol = int(self.lineEdit.text())
+                self.sag = int(self.lineEdit_3.text())
+                try:
+                    crop_img = self.tmp[:, self.sol:int(self.width)-self.sag]
+                    dim1 = len(crop_img)
+                    print("Boy: ", dim1)
+                    dim2 = len(crop_img[0])
+                    print("En: ", dim2)
+                    dim = str(crop_img.shape)
+                    self.width = dim2
+                    self.height = dim1
+                    self.width = str(self.width)
+                    self.height = str(self.height)
+                    bilgi = dim + "(" + self.width + "x" + self.height + ")"
+                    self.bilgiLabel.setText(bilgi)
+                    self.setPhoto(crop_img)
+                except:
+                    print("Yatay kirpma hatasi!")
+                if(self.lineEdit_2.text() != "" and self.lineEdit_4.text() != ""):
+                    self.üst = int(self.lineEdit_2.text())
+                    self.alt = int(self.lineEdit_4.text())
+                    try:
+                        crop_img = self.tmp[self.üst:int(self.height)-self.alt, :]
+                        dim1 = len(crop_img)
+                        print(dim1)
+                        dim2 = len(crop_img[0])
+                        print(dim2)
+                        dim = str(crop_img.shape)
+                        self.width, self.height = Image.open(self.filename).size
+                        self.width = str(self.width)
+                        self.height = str(self.height)
+                        bilgi = dim + "(" + self.width + "x" + self.height + ")"
+                        self.bilgiLabel.setText(bilgi)
+                        self.setPhoto(crop_img)
+                    except:
+                        print("Dikey kirpma hatasi!")
 
 
 if __name__ == "__main__":
