@@ -47,7 +47,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="gaussianBlurButton">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -55,7 +55,7 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>Gaussian Blur</string>
         </property>
        </widget>
       </item>
@@ -474,6 +474,38 @@
     <hint type="destinationlabel">
      <x>369</x>
      <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sharpenButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>53</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gaussianBlurButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>270</y>
     </hint>
    </hints>
   </connection>
