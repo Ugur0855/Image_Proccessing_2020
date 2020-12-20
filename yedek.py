@@ -24,6 +24,23 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.open = QtWidgets.QPushButton(self.centralwidget)
+        self.open.setObjectName("open")
+        self.horizontalLayout_2.addWidget(self.open)
+        self.save = QtWidgets.QPushButton(self.centralwidget)
+        self.save.setObjectName("save")
+        self.horizontalLayout_2.addWidget(self.save)
+        spacerItem = QtWidgets.QSpacerItem(438, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.bilgiText = QtWidgets.QLabel(self.centralwidget)
+        self.bilgiText.setObjectName("bilgiText")
+        self.horizontalLayout_2.addWidget(self.bilgiText)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 2)
+        self.resetButton = QtWidgets.QPushButton(self.centralwidget)
+        self.resetButton.setObjectName("resetButton")
+        self.gridLayout.addWidget(self.resetButton, 0, 2, 1, 1)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.histButton = QtWidgets.QPushButton(self.centralwidget)
@@ -39,15 +56,33 @@ class Ui_MainWindow(object):
         self.gaussianBlurButton.setMinimumSize(QtCore.QSize(75, 0))
         self.gaussianBlurButton.setObjectName("gaussianBlurButton")
         self.verticalLayout.addWidget(self.gaussianBlurButton)
-        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(75, 0))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.verticalLayout.addWidget(self.pushButton_6)
+        self.rotationButton = QtWidgets.QPushButton(self.centralwidget)
+        self.rotationButton.setMinimumSize(QtCore.QSize(75, 0))
+        self.rotationButton.setObjectName("rotationButton")
+        self.verticalLayout.addWidget(self.rotationButton)
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButton_7.setObjectName("pushButton_7")
         self.verticalLayout.addWidget(self.pushButton_7)
         self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem1)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
+        self.goruntuLabel = QtWidgets.QLabel(self.centralwidget)
+        self.goruntuLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.goruntuLabel.setObjectName("goruntuLabel")
+        self.horizontalLayout_3.addWidget(self.goruntuLabel)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem4)
+        self.gridLayout.addLayout(self.verticalLayout_3, 1, 1, 1, 1)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
@@ -67,36 +102,7 @@ class Ui_MainWindow(object):
         self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
         self.verticalSlider.setObjectName("verticalSlider")
         self.verticalLayout_2.addWidget(self.verticalSlider, 0, QtCore.Qt.AlignHCenter)
-        self.gridLayout.addLayout(self.verticalLayout_2, 1, 2, 2, 1)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.open = QtWidgets.QPushButton(self.centralwidget)
-        self.open.setObjectName("open")
-        self.horizontalLayout_2.addWidget(self.open)
-        self.save = QtWidgets.QPushButton(self.centralwidget)
-        self.save.setObjectName("save")
-        self.horizontalLayout_2.addWidget(self.save)
-        spacerItem = QtWidgets.QSpacerItem(438, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 2, 0, 1, 2)
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem1)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
-        self.goruntuLabel = QtWidgets.QLabel(self.centralwidget)
-        self.goruntuLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.goruntuLabel.setObjectName("goruntuLabel")
-        self.horizontalLayout_3.addWidget(self.goruntuLabel)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem4)
-        self.gridLayout.addLayout(self.verticalLayout_3, 1, 1, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_2, 1, 2, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -127,16 +133,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.resizeButton)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem6)
-        self.resetButton = QtWidgets.QPushButton(self.centralwidget)
-        self.resetButton.setObjectName("resetButton")
-        self.horizontalLayout.addWidget(self.resetButton)
-        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 3)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)        
+        self.retranslateUi(MainWindow)
         self.open.clicked.connect(self.loadImage)
         self.save.clicked.connect(self.savePhoto)
         self.verticalSlider.valueChanged['int'].connect(self.brightness_value)
@@ -145,22 +148,25 @@ class Ui_MainWindow(object):
         self.resizeButton.clicked.connect(self.changeResize)
         self.resetButton.clicked.connect(self.sifirla)
         self.sharpenButton.clicked.connect(self.keskinlestir)
-        self.gaussianBlurButton.clicked.connect(self.goruntuLabel.clear)
+        self.gaussianBlurButton.clicked.connect(self.gaussianBlur)
+        self.rotationButton.clicked.connect(self.rotationImage)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.open.setText(_translate("MainWindow", "Open"))
+        self.save.setText(_translate("MainWindow", "Save"))
+        self.bilgiText.setText(_translate("MainWindow", "İlk önce Bulanıkklık ve Parlaklı ayarlarını seçiniz."))
+        self.resetButton.setText(_translate("MainWindow", "RESET"))
         self.histButton.setText(_translate("MainWindow", "Histogram"))
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
         self.gaussianBlurButton.setText(_translate("MainWindow", "Gaussian Blur"))
-        self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
+        self.rotationButton.setText(_translate("MainWindow", "Döndürme"))
         self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
+        self.goruntuLabel.setText(_translate("MainWindow", "Görüntü"))
         self.label_3.setText(_translate("MainWindow", "Bulanıklık"))
         self.label_2.setText(_translate("MainWindow", "Parlaklık"))
-        self.open.setText(_translate("MainWindow", "Open"))
-        self.save.setText(_translate("MainWindow", "Save"))
-        self.goruntuLabel.setText(_translate("MainWindow", "Görüntü"))
         self.label.setText(_translate("MainWindow", "En"))
         self.label_4.setText(_translate("MainWindow", "Boy"))
         self.resizeButton.setText(_translate("MainWindow", "Resize"))
@@ -238,16 +244,17 @@ class Ui_MainWindow(object):
         """ This function will update the photo according to the 
             current values of blur and brightness and set it to photo label.
         """
-
-        img = self.changeBrightness(self.image, self.brightness_value_now)
-        img = self.changeBlur(img,self.blur_value_now)
-        self.setPhoto(img)
+        if self.tmp is not None:
+            img = self.changeBrightness(self.image, self.brightness_value_now)
+            img = self.changeBlur(img,self.blur_value_now)
+            self.setPhoto(img)
 
     def changeBrightness(self,img,value):
         """ This function will take an image (img) and the brightness
             value. It will perform the brightness change using OpenCv
             and after split, will merge the img and return it.
         """
+
         hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
         h,s,v = cv2.split(hsv)
         lim = 255 - value
@@ -256,12 +263,13 @@ class Ui_MainWindow(object):
         final_hsv = cv2.merge((h,s,v))
         img = cv2.cvtColor(final_hsv,cv2.COLOR_HSV2BGR)
         return img
-        
+            
     def changeBlur(self,img,value):
         """ This function will take the img image and blur values as inputs.
             After perform blur operation using opencv function, it returns 
             the image img.
         """
+       
         kernel_size = (value+1,value+1) # +1 is to avoid 0
         img = cv2.blur(img,kernel_size)
         return img
@@ -302,9 +310,16 @@ class Ui_MainWindow(object):
             borderType	Specifies image boundaries while kernel is applied on image borders. Possible values are : cv.BORDER_CONSTANT cv.BORDER_REPLICATE cv.BORDER_REFLECT cv.BORDER_WRAP cv.BORDER_REFLECT_101 cv.BORDER_TRANSPARENT cv.BORDER_REFLECT101 cv.BORDER_DEFAULT cv.BORDER_ISOLATED
         '''
         if self.tmp is not None:
-            gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/5
+            gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/9
             gaussian = cv2.filter2D(src=self.tmp, kernel=gaussianBlurKernel, ddepth=-1)
             self.setPhoto(gaussian)
+
+    def rotationImage(self):
+        if self.tmp is not None:
+            rotated = imutils.rotate_bound(self.tmp, 15)
+            self.setPhoto(rotated)
+            MainWindow.resize(701, 566)
+
 
 if __name__ == "__main__":
     import sys

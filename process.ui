@@ -105,7 +105,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="rotationButton">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -113,7 +113,7 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>Döndürme</string>
         </property>
        </widget>
       </item>
@@ -513,6 +513,22 @@
     <hint type="destinationlabel">
      <x>362</x>
      <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rotationButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>279</y>
     </hint>
    </hints>
   </connection>

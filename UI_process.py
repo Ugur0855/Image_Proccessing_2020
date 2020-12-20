@@ -56,10 +56,10 @@ class Ui_MainWindow(object):
         self.gaussianBlurButton.setMinimumSize(QtCore.QSize(75, 0))
         self.gaussianBlurButton.setObjectName("gaussianBlurButton")
         self.verticalLayout.addWidget(self.gaussianBlurButton)
-        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(75, 0))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.verticalLayout.addWidget(self.pushButton_6)
+        self.rotationButton = QtWidgets.QPushButton(self.centralwidget)
+        self.rotationButton.setMinimumSize(QtCore.QSize(75, 0))
+        self.rotationButton.setObjectName("rotationButton")
+        self.verticalLayout.addWidget(self.rotationButton)
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -149,6 +149,7 @@ class Ui_MainWindow(object):
         self.resetButton.clicked.connect(self.sifirla)
         self.sharpenButton.clicked.connect(self.keskinlestir)
         self.gaussianBlurButton.clicked.connect(self.gaussianBlur)
+        self.rotationButton.clicked.connect(self.rotationImage)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -161,7 +162,7 @@ class Ui_MainWindow(object):
         self.histButton.setText(_translate("MainWindow", "Histogram"))
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
         self.gaussianBlurButton.setText(_translate("MainWindow", "Gaussian Blur"))
-        self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
+        self.rotationButton.setText(_translate("MainWindow", "Döndürme"))
         self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
         self.goruntuLabel.setText(_translate("MainWindow", "Görüntü"))
         self.label_3.setText(_translate("MainWindow", "Bulanıklık"))
@@ -312,6 +313,13 @@ class Ui_MainWindow(object):
             gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/9
             gaussian = cv2.filter2D(src=self.tmp, kernel=gaussianBlurKernel, ddepth=-1)
             self.setPhoto(gaussian)
+
+    def rotationImage(self):
+        if self.tmp is not None:
+            rotated = imutils.rotate_bound(self.tmp, 15)
+            self.setPhoto(rotated)
+            MainWindow.resize(701, 566)
+
 
 if __name__ == "__main__":
     import sys
