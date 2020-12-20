@@ -301,7 +301,8 @@ class Ui_MainWindow(object):
             borderType	Specifies image boundaries while kernel is applied on image borders. Possible values are : cv.BORDER_CONSTANT cv.BORDER_REPLICATE cv.BORDER_REFLECT cv.BORDER_WRAP cv.BORDER_REFLECT_101 cv.BORDER_TRANSPARENT cv.BORDER_REFLECT101 cv.BORDER_DEFAULT cv.BORDER_ISOLATED
         '''
         if self.tmp is not None:
-            gaussian = cv2.GaussianBlur(src=self.tmp,(5,5),cv2.BORDER_DEFAULT)
+            gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/9
+            gaussian = cv2.filter2D(src=self.tmp, kernel=gaussianBlurKernel, ddepth=-1)
             self.setPhoto(gaussian)
 
 if __name__ == "__main__":
