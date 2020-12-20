@@ -34,6 +34,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.save)
         spacerItem = QtWidgets.QSpacerItem(438, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
+        self.bilgiText = QtWidgets.QLabel(self.centralwidget)
+        self.bilgiText.setObjectName("bilgiText")
+        self.horizontalLayout_2.addWidget(self.bilgiText)
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 2)
         self.resetButton = QtWidgets.QPushButton(self.centralwidget)
         self.resetButton.setObjectName("resetButton")
@@ -153,6 +156,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.open.setText(_translate("MainWindow", "Open"))
         self.save.setText(_translate("MainWindow", "Save"))
+        self.bilgiText.setText(_translate("MainWindow", "İlk önce Bulanıkklık ve Parlaklı ayarlarını seçiniz."))
         self.resetButton.setText(_translate("MainWindow", "RESET"))
         self.histButton.setText(_translate("MainWindow", "Histogram"))
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
@@ -167,7 +171,7 @@ class Ui_MainWindow(object):
         self.resizeButton.setText(_translate("MainWindow", "Resize"))
         self.resetButton.setText(_translate("MainWindow", "RESET"))
 
-        
+
 
 # Added code here
         self.filename = None # Will hold the image address location
@@ -239,16 +243,17 @@ class Ui_MainWindow(object):
         """ This function will update the photo according to the 
             current values of blur and brightness and set it to photo label.
         """
-
-        img = self.changeBrightness(self.image, self.brightness_value_now)
-        img = self.changeBlur(img,self.blur_value_now)
-        self.setPhoto(img)
+        if self.tmp is not None:
+            img = self.changeBrightness(self.image, self.brightness_value_now)
+            img = self.changeBlur(img,self.blur_value_now)
+            self.setPhoto(img)
 
     def changeBrightness(self,img,value):
         """ This function will take an image (img) and the brightness
             value. It will perform the brightness change using OpenCv
             and after split, will merge the img and return it.
         """
+
         hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
         h,s,v = cv2.split(hsv)
         lim = 255 - value
@@ -257,12 +262,13 @@ class Ui_MainWindow(object):
         final_hsv = cv2.merge((h,s,v))
         img = cv2.cvtColor(final_hsv,cv2.COLOR_HSV2BGR)
         return img
-        
+            
     def changeBlur(self,img,value):
         """ This function will take the img image and blur values as inputs.
             After perform blur operation using opencv function, it returns 
             the image img.
         """
+       
         kernel_size = (value+1,value+1) # +1 is to avoid 0
         img = cv2.blur(img,kernel_size)
         return img
