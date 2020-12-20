@@ -35,10 +35,10 @@ class Ui_MainWindow(object):
         self.sharpenButton.setMinimumSize(QtCore.QSize(75, 0))
         self.sharpenButton.setObjectName("sharpenButton")
         self.verticalLayout.addWidget(self.sharpenButton)
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(75, 0))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.verticalLayout.addWidget(self.pushButton_5)
+        self.gaussianBlurButton = QtWidgets.QPushButton(self.centralwidget)
+        self.gaussianBlurButton.setMinimumSize(QtCore.QSize(75, 0))
+        self.gaussianBlurButton.setObjectName("gaussianBlurButton")
+        self.verticalLayout.addWidget(self.gaussianBlurButton)
         self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_6.setMinimumSize(QtCore.QSize(75, 0))
         self.pushButton_6.setObjectName("pushButton_6")
@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(MainWindow)        
         self.open.clicked.connect(self.loadImage)
         self.save.clicked.connect(self.savePhoto)
         self.verticalSlider.valueChanged['int'].connect(self.brightness_value)
@@ -145,6 +145,7 @@ class Ui_MainWindow(object):
         self.resizeButton.clicked.connect(self.changeResize)
         self.resetButton.clicked.connect(self.sifirla)
         self.sharpenButton.clicked.connect(self.keskinlestir)
+        self.gaussianBlurButton.clicked.connect(self.goruntuLabel.clear)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -152,7 +153,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.histButton.setText(_translate("MainWindow", "Histogram"))
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
-        self.pushButton_5.setText(_translate("MainWindow", "PushButton"))
+        self.gaussianBlurButton.setText(_translate("MainWindow", "Gaussian Blur"))
         self.pushButton_6.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_7.setText(_translate("MainWindow", "PushButton"))
         self.label_3.setText(_translate("MainWindow", "Bulanıklık"))
@@ -164,7 +165,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Boy"))
         self.resizeButton.setText(_translate("MainWindow", "Resize"))
         self.resetButton.setText(_translate("MainWindow", "RESET"))
-        
+
 
 
 # Added code here
@@ -301,7 +302,7 @@ class Ui_MainWindow(object):
             borderType	Specifies image boundaries while kernel is applied on image borders. Possible values are : cv.BORDER_CONSTANT cv.BORDER_REPLICATE cv.BORDER_REFLECT cv.BORDER_WRAP cv.BORDER_REFLECT_101 cv.BORDER_TRANSPARENT cv.BORDER_REFLECT101 cv.BORDER_DEFAULT cv.BORDER_ISOLATED
         '''
         if self.tmp is not None:
-            gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/9
+            gaussianBlurKernel = np.array(([[1, 2, 1], [2, 4, 2], [1, 2, 1]]), np.float32)/5
             gaussian = cv2.filter2D(src=self.tmp, kernel=gaussianBlurKernel, ddepth=-1)
             self.setPhoto(gaussian)
 
