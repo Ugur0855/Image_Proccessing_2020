@@ -10,8 +10,20 @@
     <height>560</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>24</width>
+    <height>24</height>
+   </size>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -118,7 +130,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="girdapButton">
         <property name="minimumSize">
          <size>
           <width>75</width>
@@ -126,7 +138,7 @@
          </size>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>Girdap</string>
         </property>
        </widget>
       </item>
@@ -350,6 +362,69 @@
       </item>
      </layout>
     </item>
+    <item row="3" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Sol</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Üst</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Sağ</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_3"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Alt</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_4"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="kirpButton">
+        <property name="text">
+         <string>Kırp</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -367,8 +442,8 @@
      <y>26</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>282</y>
+     <x>364</x>
+     <y>264</y>
     </hint>
    </hints>
   </connection>
@@ -383,8 +458,8 @@
      <y>26</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>282</y>
+     <x>364</x>
+     <y>264</y>
     </hint>
    </hints>
   </connection>
@@ -395,12 +470,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>664</x>
-     <y>504</y>
+     <x>651</x>
+     <y>467</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>282</y>
+     <x>364</x>
+     <y>264</y>
     </hint>
    </hints>
   </connection>
@@ -411,12 +486,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>664</x>
-     <y>269</y>
+     <x>651</x>
+     <y>251</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>282</y>
+     <x>364</x>
+     <y>264</y>
     </hint>
    </hints>
   </connection>
@@ -428,11 +503,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>117</y>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>366</x>
-     <y>282</y>
+     <x>360</x>
+     <y>264</y>
     </hint>
    </hints>
   </connection>
@@ -444,11 +519,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>543</x>
-     <y>535</y>
+     <y>498</y>
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
-     <y>533</y>
+     <y>496</y>
     </hint>
    </hints>
   </connection>
@@ -460,11 +535,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>543</x>
-     <y>535</y>
+     <y>498</y>
     </hint>
     <hint type="destinationlabel">
      <x>462</x>
-     <y>533</y>
+     <y>496</y>
     </hint>
    </hints>
   </connection>
@@ -479,8 +554,8 @@
      <y>29</y>
     </hint>
     <hint type="destinationlabel">
-     <x>369</x>
-     <y>266</y>
+     <x>363</x>
+     <y>263</y>
     </hint>
    </hints>
   </connection>
@@ -508,11 +583,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>50</x>
-     <y>268</y>
+     <y>253</y>
     </hint>
     <hint type="destinationlabel">
      <x>362</x>
-     <y>270</y>
+     <y>255</y>
     </hint>
    </hints>
   </connection>
@@ -524,11 +599,43 @@
    <hints>
     <hint type="sourcelabel">
      <x>50</x>
-     <y>358</y>
+     <y>338</y>
     </hint>
     <hint type="destinationlabel">
      <x>346</x>
-     <y>279</y>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>girdapButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>259</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kirpButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>617</x>
+     <y>514</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>257</y>
     </hint>
    </hints>
   </connection>
