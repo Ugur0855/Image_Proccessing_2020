@@ -11,17 +11,20 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage
-from skimage import data
+from skimage import data, io
+import skimage.exposure as skie
 from skimage.transform import swirl
 from cv2 import cv2
 import imutils
 from PIL import Image
+from skimage.morphology import square, closing
+from skimage.color import rgb2gray
 import numpy as np
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(681, 561)
+        MainWindow.resize(696, 574)
         MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
         MainWindow.setIconSize(QtCore.QSize(24, 24))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -46,10 +49,14 @@ class Ui_MainWindow(object):
         self.talimatLabel = QtWidgets.QLabel(self.centralwidget)
         self.talimatLabel.setObjectName("talimatLabel")
         self.horizontalLayout_2.addWidget(self.talimatLabel)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 2)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.resetButton = QtWidgets.QPushButton(self.centralwidget)
         self.resetButton.setObjectName("resetButton")
-        self.gridLayout.addWidget(self.resetButton, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.resetButton, 0, 1, 1, 1)
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.histButton = QtWidgets.QPushButton(self.centralwidget)
@@ -69,29 +76,52 @@ class Ui_MainWindow(object):
         self.rotationButton.setMinimumSize(QtCore.QSize(75, 0))
         self.rotationButton.setObjectName("rotationButton")
         self.verticalLayout.addWidget(self.rotationButton)
-        self.girdapButton = QtWidgets.QPushButton(self.centralwidget)
-        self.girdapButton.setMinimumSize(QtCore.QSize(75, 0))
-        self.girdapButton.setObjectName("girdapButton")
-        self.verticalLayout.addWidget(self.girdapButton)
-        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+        self.flipButton = QtWidgets.QPushButton(self.centralwidget)
+        self.flipButton.setObjectName("flipButton")
+        self.verticalLayout.addWidget(self.flipButton)
+        self.kenarButton = QtWidgets.QPushButton(self.centralwidget)
+        self.kenarButton.setObjectName("kenarButton")
+        self.verticalLayout.addWidget(self.kenarButton)
+        self.yogunlukButton = QtWidgets.QPushButton(self.centralwidget)
+        self.yogunlukButton.setObjectName("yogunlukButton")
+        self.verticalLayout.addWidget(self.yogunlukButton)
+        self.yogunlukInText = QtWidgets.QLineEdit(self.centralwidget)
+        self.yogunlukInText.setObjectName("yogunlukInText")
+        self.verticalLayout.addWidget(self.yogunlukInText)
+        self.yogunlukOutText = QtWidgets.QLineEdit(self.centralwidget)
+        self.yogunlukOutText.setObjectName("yogunlukOutText")
+        self.verticalLayout.addWidget(self.yogunlukOutText)
+        self.genislemeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.genislemeButton.setObjectName("genislemeButton")
+        self.verticalLayout.addWidget(self.genislemeButton)
+        self.erosionButton = QtWidgets.QPushButton(self.centralwidget)
+        self.erosionButton.setObjectName("erosionButton")
+        self.verticalLayout.addWidget(self.erosionButton)
+        self.horizontalLayout_4.addLayout(self.verticalLayout)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem2)
+        self.horizontalLayout_6.addLayout(self.horizontalLayout_4)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem3)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem2)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem4)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem5)
         self.goruntuLabel = QtWidgets.QLabel(self.centralwidget)
         self.goruntuLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.goruntuLabel.setObjectName("goruntuLabel")
         self.horizontalLayout_3.addWidget(self.goruntuLabel)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem4)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem6)
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem5)
-        self.gridLayout.addLayout(self.verticalLayout_3, 1, 1, 1, 1)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem7)
+        self.horizontalLayout_6.addLayout(self.verticalLayout_3)
+        self.gridLayout.addLayout(self.horizontalLayout_6, 1, 0, 1, 1)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
@@ -111,7 +141,7 @@ class Ui_MainWindow(object):
         self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
         self.verticalSlider.setObjectName("verticalSlider")
         self.verticalLayout_2.addWidget(self.verticalSlider, 0, QtCore.Qt.AlignHCenter)
-        self.gridLayout.addLayout(self.verticalLayout_2, 1, 2, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_2, 1, 1, 2, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -125,8 +155,8 @@ class Ui_MainWindow(object):
         self.enUzunlukText.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.enUzunlukText.setObjectName("enUzunlukText")
         self.horizontalLayout.addWidget(self.enUzunlukText)
-        spacerItem6 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem6)
+        spacerItem8 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem8)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setMinimumSize(QtCore.QSize(75, 0))
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
@@ -140,9 +170,9 @@ class Ui_MainWindow(object):
         self.resizeButton.setMinimumSize(QtCore.QSize(75, 0))
         self.resizeButton.setObjectName("resizeButton")
         self.horizontalLayout.addWidget(self.resizeButton)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem7)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 2)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem9)
+        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
@@ -176,15 +206,15 @@ class Ui_MainWindow(object):
         self.kirpButton = QtWidgets.QPushButton(self.centralwidget)
         self.kirpButton.setObjectName("kirpButton")
         self.horizontalLayout_5.addWidget(self.kirpButton)
-        self.gridLayout.addLayout(self.horizontalLayout_5, 3, 0, 1, 3)
+        self.gridLayout.addLayout(self.horizontalLayout_5, 3, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.open.clicked.connect(self.loadImage)
         self.save.clicked.connect(self.savePhoto)
+        self.open.clicked.connect(self.loadImage)
         self.verticalSlider.valueChanged['int'].connect(self.brightness_value)
         self.verticalSlider_2.valueChanged['int'].connect(self.blur_value)
         self.histButton.clicked.connect(self.hist)
@@ -194,6 +224,11 @@ class Ui_MainWindow(object):
         self.gaussianBlurButton.clicked.connect(self.gaussianBlur)
         self.rotationButton.clicked.connect(self.rotationImage)
         self.kirpButton.clicked.connect(self.kirpImage)
+        self.flipButton.clicked.connect(self.flipImage)
+        self.kenarButton.clicked.connect(self.cannyImage)
+        self.yogunlukButton.clicked.connect(self.rescaleIntensityImage)
+        self.erosionButton.clicked.connect(self.erosionImage)
+        self.genislemeButton.clicked.connect(self.dilateImage)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -208,7 +243,11 @@ class Ui_MainWindow(object):
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
         self.gaussianBlurButton.setText(_translate("MainWindow", "Gaussian Blur"))
         self.rotationButton.setText(_translate("MainWindow", "Döndürme"))
-        self.girdapButton.setText(_translate("MainWindow", "Girdap"))
+        self.flipButton.setText(_translate("MainWindow", "Simetri(Yatay)"))
+        self.kenarButton.setText(_translate("MainWindow", "Kenar Belirleme"))
+        self.yogunlukButton.setText(_translate("MainWindow", "Yoğunluk Dönüşümü"))
+        self.genislemeButton.setText(_translate("MainWindow", "Genişleme"))
+        self.erosionButton.setText(_translate("MainWindow", "Erozyon"))
         self.goruntuLabel.setText(_translate("MainWindow", "Görüntü"))
         self.label_3.setText(_translate("MainWindow", "Bulanıklık"))
         self.label_2.setText(_translate("MainWindow", "Parlaklık"))
@@ -226,14 +265,23 @@ class Ui_MainWindow(object):
         self.tmp = None # Will hold the temporary image for display
         self.brightness_value_now = 0 # Updated brightness value
         self.blur_value_now = 0 # Updated blur value
+
+        '''
+        Resize değişkenleri
+        '''
         self.enDegeri = 0
         self.boyDegeri = 0
+
+        '''
+        Kırpma işlemleri için değişkenler
+        '''
         self.sol = 0
         self.sag = 0
         self.alt = 0
         self.üst = 0
         self.width = 0
         self.height = 0
+
 
     def loadImage(self):
         """ This function will load the user selected image
@@ -387,6 +435,45 @@ class Ui_MainWindow(object):
             rotated = imutils.rotate_bound(self.tmp, 15)
             self.setPhoto(rotated)
 
+    def flipImage(self):
+        if self.tmp is not None:
+            flipped = cv2.flip(self.tmp, 0)
+            self.setPhoto(flipped)
+
+    def cannyImage(self):
+        if self.tmp is not None:
+            edges = cv2.Canny(self.tmp,100,200)
+            self.setPhoto(edges)
+    
+    def rescaleIntensityImage(self):
+        if self.tmp is not None:
+            if(self.yogunlukInText.text() != "" and self.yogunlukOutText.text() != ""):
+                in_deger = int(self.yogunlukInText.text())
+                out_deger = int(self.yogunlukOutText.text())
+
+                self.tmp = 1.0 * self.tmp
+                self.tmp = skie.rescale_intensity(self.tmp, in_range=(in_deger, out_deger))
+                #Alttaki 2 kod satırını çalıştırdığımızda hata almaktayız. Çünkü float dizisine GUI içinde dönüşüm uygulanamıyor.
+                #♥
+                # image = QImage(self.tmp, self.tmp.shape[1],self.tmp.shape[0],self.tmp.strides[0],QImage.Format_RGB888)
+                # self.goruntuLabel.setPixmap(QtGui.QPixmap.fromImage(self.tmp))
+            I = 1.0-cv2.cvtColor(self.tmp, cv2.COLOR_RGB2GRAY)
+            I2 = closing(I, square(50))
+            image = QImage(I2, I2.shape[1],I2.shape[0],I2.strides[0],QImage.Format_RGB888)
+            self.goruntuLabel.setPixmap(QtGui.QPixmap.fromImage(image))
+
+    def erosionImage(self):
+        if self.tmp is not None:
+            kernel = np.ones((3,3),np.uint8)
+            erosion = cv2.erode(self.tmp,kernel,iterations = 1)
+            self.setPhoto(erosion)
+
+    def dilateImage(self):
+        if self.tmp is not None:
+            kernel = np.ones((5,5),np.uint8)
+            dilation = cv2.dilate(self.tmp,kernel,iterations = 1)
+            self.setPhoto(dilation)
+
     def kirpImage(self):
         if self.tmp is not None:
             if(self.lineEdit.text() != "" and self.lineEdit_3.text() != ""):
@@ -408,24 +495,24 @@ class Ui_MainWindow(object):
                     self.setPhoto(crop_img)
                 except:
                     print("Yatay kirpma hatasi!")
-                if(self.lineEdit_2.text() != "" and self.lineEdit_4.text() != ""):
-                    self.üst = int(self.lineEdit_2.text())
-                    self.alt = int(self.lineEdit_4.text())
-                    try:
-                        crop_img = self.tmp[self.üst:int(self.height)-self.alt, :]
-                        dim1 = len(crop_img)
-                        print(dim1)
-                        dim2 = len(crop_img[0])
-                        print(dim2)
-                        dim = str(crop_img.shape)
-                        self.width, self.height = Image.open(self.filename).size
-                        self.width = str(self.width)
-                        self.height = str(self.height)
-                        bilgi = dim + "(" + self.width + "x" + self.height + ")"
-                        self.bilgiLabel.setText(bilgi)
-                        self.setPhoto(crop_img)
-                    except:
-                        print("Dikey kirpma hatasi!")
+            if(self.lineEdit_2.text() != "" and self.lineEdit_4.text() != ""):
+                self.üst = int(self.lineEdit_2.text())
+                self.alt = int(self.lineEdit_4.text())
+                try:
+                    crop_img = self.tmp[self.üst:int(self.height)-self.alt, :]
+                    dim1 = len(crop_img)
+                    print(dim1)
+                    dim2 = len(crop_img[0])
+                    print(dim2)
+                    dim = str(crop_img.shape)
+                    self.width, self.height = Image.open(self.filename).size
+                    self.width = str(self.width)
+                    self.height = str(self.height)
+                    bilgi = dim + "(" + self.width + "x" + self.height + ")"
+                    self.bilgiLabel.setText(bilgi)
+                    self.setPhoto(crop_img)
+                except:
+                    print("Dikey kirpma hatasi!")
 
 
 if __name__ == "__main__":

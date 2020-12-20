@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>561</height>
+    <width>696</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Görüntü İşleme Yazılımı</string>
   </property>
   <property name="iconSize">
    <size>
@@ -27,7 +27,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="2">
+    <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QPushButton" name="open">
@@ -85,7 +85,7 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="2">
+    <item row="0" column="1">
      <widget class="QPushButton" name="resetButton">
       <property name="text">
        <string>RESET</string>
@@ -93,119 +93,118 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
-       <widget class="QPushButton" name="histButton">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>75</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Histogram</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="sharpenButton">
-        <property name="minimumSize">
-         <size>
-          <width>75</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Keskinlik</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="gaussianBlurButton">
-        <property name="minimumSize">
-         <size>
-          <width>75</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Gaussian Blur</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="rotationButton">
-        <property name="minimumSize">
-         <size>
-          <width>75</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Döndürme</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="girdapButton">
-        <property name="minimumSize">
-         <size>
-          <width>75</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Girdap</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="histButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Histogram</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="sharpenButton">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Keskinlik</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="gaussianBlurButton">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Gaussian Blur</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="rotationButton">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Döndürme</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="flipButton">
+            <property name="text">
+             <string>Simetri(Dikey)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="kenarButton">
+            <property name="text">
+             <string>Kenar Belirleme</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="yogunlukButton">
+            <property name="text">
+             <string>Yoğunluk Dönüşümü</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="yogunlukInText"/>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="yogunlukOutText"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="cannyButton">
+            <property name="text">
+             <string>Canny</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="genislemeButton">
+            <property name="text">
+             <string>Genişleme</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="erosionButton">
+            <property name="text">
+             <string>Erozyon</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QLabel" name="goruntuLabel">
-          <property name="text">
-           <string>Görüntü</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_7">
+         <spacer name="horizontalSpacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -220,21 +219,91 @@
        </layout>
       </item>
       <item>
-       <spacer name="verticalSpacer_2">
+       <spacer name="horizontalSpacer_8">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>20</width>
-          <height>40</height>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="goruntuLabel">
+            <property name="text">
+             <string>Görüntü</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
-    <item row="1" column="2">
+    <item row="1" column="1" rowspan="2">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_3">
@@ -275,7 +344,7 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label">
@@ -382,7 +451,7 @@
       </item>
      </layout>
     </item>
-    <item row="3" column="0" colspan="3">
+    <item row="3" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QLabel" name="label_7">
@@ -462,8 +531,8 @@
      <y>26</y>
     </hint>
     <hint type="destinationlabel">
-     <x>364</x>
-     <y>264</y>
+     <x>527</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -478,8 +547,8 @@
      <y>26</y>
     </hint>
     <hint type="destinationlabel">
-     <x>364</x>
-     <y>264</y>
+     <x>527</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -490,12 +559,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>651</x>
-     <y>467</y>
+     <x>657</x>
+     <y>387</y>
     </hint>
     <hint type="destinationlabel">
-     <x>364</x>
-     <y>264</y>
+     <x>527</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -506,12 +575,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>651</x>
-     <y>251</y>
+     <x>638</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
-     <x>364</x>
-     <y>264</y>
+     <x>527</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -523,43 +592,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>111</y>
+     <y>63</y>
     </hint>
     <hint type="destinationlabel">
-     <x>360</x>
-     <y>264</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resizeButton</sender>
-   <signal>clicked()</signal>
-   <receiver>enUzunlukText</receiver>
-   <slot>copy()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>543</x>
-     <y>498</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>223</x>
-     <y>496</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>resizeButton</sender>
-   <signal>clicked()</signal>
-   <receiver>boyUzunlukText</receiver>
-   <slot>copy()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>543</x>
-     <y>498</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>462</x>
-     <y>496</y>
+     <x>524</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -570,12 +607,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>638</x>
-     <y>29</y>
+     <x>612</x>
+     <y>32</y>
     </hint>
     <hint type="destinationlabel">
-     <x>363</x>
-     <y>263</y>
+     <x>527</x>
+     <y>270</y>
     </hint>
    </hints>
   </connection>
@@ -586,12 +623,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>53</x>
-     <y>188</y>
+     <x>54</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
-     <x>356</x>
-     <y>264</y>
+     <x>520</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -602,12 +639,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>50</x>
-     <y>253</y>
+     <x>51</x>
+     <y>127</y>
     </hint>
     <hint type="destinationlabel">
-     <x>362</x>
-     <y>255</y>
+     <x>524</x>
+     <y>266</y>
     </hint>
    </hints>
   </connection>
@@ -618,28 +655,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>50</x>
-     <y>338</y>
+     <x>51</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
-     <x>346</x>
-     <y>264</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>girdapButton</sender>
-   <signal>clicked()</signal>
-   <receiver>goruntuLabel</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>71</x>
-     <y>405</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>339</x>
-     <y>259</y>
+     <x>510</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -650,12 +671,156 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>617</x>
-     <y>514</y>
+     <x>623</x>
+     <y>533</y>
     </hint>
     <hint type="destinationlabel">
-     <x>345</x>
-     <y>257</y>
+     <x>507</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flipButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kenarButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kenarButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>513</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>yogunlukButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>518</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>erosionButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>genislemeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>427</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>520</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resizeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>525</x>
+     <y>503</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cannyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cannyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>goruntuLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>396</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>262</y>
     </hint>
    </hints>
   </connection>
