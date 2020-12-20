@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>688</width>
-    <height>560</height>
+    <width>681</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -50,14 +50,34 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>438</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="bilgiText">
+       <widget class="QLabel" name="bilgiLabel">
+        <property name="text">
+         <string>Bilgi</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="talimatLabel">
         <property name="text">
          <string>İlk önce Bulanıkklık ve Parlaklı ayarlarını seçiniz.</string>
         </property>

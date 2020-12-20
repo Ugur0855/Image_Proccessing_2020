@@ -9,7 +9,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage
 from skimage import data
@@ -22,7 +21,9 @@ import numpy as np
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(701, 566)
+        MainWindow.resize(681, 561)
+        MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        MainWindow.setIconSize(QtCore.QSize(24, 24))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -35,11 +36,16 @@ class Ui_MainWindow(object):
         self.save = QtWidgets.QPushButton(self.centralwidget)
         self.save.setObjectName("save")
         self.horizontalLayout_2.addWidget(self.save)
-        spacerItem = QtWidgets.QSpacerItem(438, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.bilgiText = QtWidgets.QLabel(self.centralwidget)
-        self.bilgiText.setObjectName("bilgiText")
-        self.horizontalLayout_2.addWidget(self.bilgiText)
+        self.bilgiLabel = QtWidgets.QLabel(self.centralwidget)
+        self.bilgiLabel.setObjectName("bilgiLabel")
+        self.horizontalLayout_2.addWidget(self.bilgiLabel)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem1)
+        self.talimatLabel = QtWidgets.QLabel(self.centralwidget)
+        self.talimatLabel.setObjectName("talimatLabel")
+        self.horizontalLayout_2.addWidget(self.talimatLabel)
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 2)
         self.resetButton = QtWidgets.QPushButton(self.centralwidget)
         self.resetButton.setObjectName("resetButton")
@@ -70,21 +76,21 @@ class Ui_MainWindow(object):
         self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
         self.goruntuLabel = QtWidgets.QLabel(self.centralwidget)
         self.goruntuLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.goruntuLabel.setObjectName("goruntuLabel")
         self.horizontalLayout_3.addWidget(self.goruntuLabel)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem5)
         self.gridLayout.addLayout(self.verticalLayout_3, 1, 1, 1, 1)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -119,8 +125,8 @@ class Ui_MainWindow(object):
         self.enUzunlukText.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.enUzunlukText.setObjectName("enUzunlukText")
         self.horizontalLayout.addWidget(self.enUzunlukText)
-        spacerItem5 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem5)
+        spacerItem6 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem6)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setMinimumSize(QtCore.QSize(75, 0))
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
@@ -134,8 +140,8 @@ class Ui_MainWindow(object):
         self.resizeButton.setMinimumSize(QtCore.QSize(75, 0))
         self.resizeButton.setObjectName("resizeButton")
         self.horizontalLayout.addWidget(self.resizeButton)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem6)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem7)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 2)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
@@ -195,7 +201,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.open.setText(_translate("MainWindow", "Open"))
         self.save.setText(_translate("MainWindow", "Save"))
-        self.bilgiText.setText(_translate("MainWindow", "İlk önce Bulanıkklık ve Parlaklı ayarlarını seçiniz."))
+        self.bilgiLabel.setText(_translate("MainWindow", "Bilgi"))
+        self.talimatLabel.setText(_translate("MainWindow", "İlk önce Bulanıkklık ve Parlaklı ayarlarını seçiniz."))
         self.resetButton.setText(_translate("MainWindow", "RESET"))
         self.histButton.setText(_translate("MainWindow", "Histogram"))
         self.sharpenButton.setText(_translate("MainWindow", "Keskinlik"))
@@ -233,10 +240,9 @@ class Ui_MainWindow(object):
         self.filename = QFileDialog.getOpenFileName(filter="Image (*.*)")[0]
         if(self.filename):
             self.image = cv2.imread(self.filename)
+            dim = str(self.image.shape)
+            self.bilgiLabel.setText(dim)
             self.setPhoto(self.image)
-            #uzunluklar = self.image.shape
-            #self.enDegeri = uzunluklar[0]
-            #self.boyDegeri = uzunluklar[1]
 
     def setPhoto(self,image):
         """ This function will take image input and resize it 
