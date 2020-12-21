@@ -161,9 +161,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="kenarButton">
+           <widget class="QPushButton" name="videoButton">
             <property name="text">
-             <string>Kenar Belirleme</string>
+             <string>Video(Kenar Belirleme)</string>
             </property>
            </widget>
           </item>
@@ -437,17 +437,11 @@
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="QPushButton" name="activeContourButton">
+        <property name="text">
+         <string>Active Contours</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
      </layout>
     </item>
@@ -688,7 +682,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>67</x>
-     <y>237</y>
+     <y>203</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -697,14 +691,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>kenarButton</sender>
+   <sender>videoButton</sender>
    <signal>clicked()</signal>
    <receiver>goruntuLabel</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>66</x>
-     <y>262</y>
+     <y>240</y>
     </hint>
     <hint type="destinationlabel">
      <x>509</x>
@@ -713,14 +707,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>kenarButton</sender>
+   <sender>videoButton</sender>
    <signal>clicked()</signal>
    <receiver>goruntuLabel</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>85</x>
-     <y>268</y>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
      <x>513</x>
@@ -736,7 +730,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>85</x>
-     <y>299</y>
+     <y>279</y>
     </hint>
     <hint type="destinationlabel">
      <x>518</x>
@@ -752,7 +746,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>73</x>
-     <y>461</y>
+     <y>451</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -768,7 +762,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>75</x>
-     <y>427</y>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
      <x>520</x>
@@ -783,7 +777,7 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>525</x>
+     <x>495</x>
      <y>503</y>
     </hint>
     <hint type="destinationlabel">
@@ -800,7 +794,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>52</x>
-     <y>394</y>
+     <y>380</y>
     </hint>
     <hint type="destinationlabel">
      <x>509</x>
@@ -809,17 +803,17 @@
    </hints>
   </connection>
   <connection>
-   <sender>cannyButton</sender>
+   <sender>activeContourButton</sender>
    <signal>clicked()</signal>
    <receiver>goruntuLabel</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>396</y>
+     <x>563</x>
+     <y>500</y>
     </hint>
     <hint type="destinationlabel">
-     <x>511</x>
+     <x>506</x>
      <y>262</y>
     </hint>
    </hints>
